@@ -95,7 +95,10 @@ public class Game1 : Game
         if (_timer >= 0.5)
         {
             _timer = 0;
-            _blockY++;
+            var testY = _blockY + 1;
+            if (CanBlockMove(_blockX, testY, _blockRotation))
+                _blockY = testY;
+            
         }
 
         var state = Keyboard.GetState();
@@ -103,23 +106,33 @@ public class Game1 : Game
         {
             if (state.IsKeyDown(Keys.E))
             {
-                _blockRotation++;
-                if (_blockRotation > _blocks[_blockType].Rotations - 1)
-                    _blockRotation = 0;
+                var testRotattion = _blockRotation + 1;
+                if (testRotattion > _blocks[_blockType].Rotations - 1)
+                    testRotattion = 0;
+                
+                if (CanBlockMove(_blockX, _blockY, testRotattion))
+                    _blockRotation = testRotattion;
             }
             else if (state.IsKeyDown(Keys.Q))
             {
-                _blockRotation--;
-                if (_blockRotation < 0)
-                    _blockRotation = _blocks[_blockType].Rotations - 1;
+                var testRotattion = _blockRotation - 1;
+                if (testRotattion < 0)
+                    testRotattion = _blocks[_blockType].Rotations - 1;
+                
+                if (CanBlockMove(_blockX, _blockY, testRotattion))
+                    _blockRotation = testRotattion;
             }
             else if (state.IsKeyDown(Keys.A))
             {
-                _blockX--;
+                var testX = _blockX - 1;
+                if (CanBlockMove(testX, _blockY, _blockRotation))
+                    _blockX = testX;
             }
             else if (state.IsKeyDown(Keys.D))
             {
-                _blockX++;
+                var testX = _blockX + 1;
+                if (CanBlockMove(testX, _blockY, _blockRotation))
+                    _blockX = testX;
             }
             // TODO remove 
             else if (state.IsKeyDown(Keys.S))
@@ -174,5 +187,20 @@ public class Game1 : Game
     {
         _spriteBatch.Draw(_pixels,
             new Rectangle(x * _blockSize, y * _blockSize, _blockDrawSize - 1, _blockDrawSize - 1), color);
+    }
+
+    private bool CanBlockMove(int test_x, int test_y, int test_rotation)
+    {
+        for (int y = 0; y < 4; y++)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+               if(_blocks[_blockType][test_rotation, y, x] != ' ' && (test_x + x) < 0)
+                   return false;
+            } 
+        }
+        
+        
+        return true;
     }
 }

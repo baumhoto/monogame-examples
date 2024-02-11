@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blocks", "blocks\blocks.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rheinwerk", "rheinwerk\rheinwerk.csproj", "{6344AECF-33CB-43A0-A09F-B836FCE5FE0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adventure", "Adventure\Adventure.csproj", "{BE5772AB-A04B-44CE-A7A3-B6F20F948C51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{6344AECF-33CB-43A0-A09F-B836FCE5FE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6344AECF-33CB-43A0-A09F-B836FCE5FE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6344AECF-33CB-43A0-A09F-B836FCE5FE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5772AB-A04B-44CE-A7A3-B6F20F948C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5772AB-A04B-44CE-A7A3-B6F20F948C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5772AB-A04B-44CE-A7A3-B6F20F948C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5772AB-A04B-44CE-A7A3-B6F20F948C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

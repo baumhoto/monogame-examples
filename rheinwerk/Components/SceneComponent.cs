@@ -22,7 +22,6 @@ internal class SceneComponent : DrawableGameComponent
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        // _starGold = Game.Content.Load<Texture2D>("starGold");
         _pixel = new Texture2D(GraphicsDevice, 1, 1);
         _pixel.SetData<Color>(new Color[] { Color.White });
         
@@ -31,8 +30,8 @@ internal class SceneComponent : DrawableGameComponent
 
     public override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
-
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        
         int width = GraphicsDevice.Viewport.Width - 20;
         int height = GraphicsDevice.Viewport.Height - 20;
         

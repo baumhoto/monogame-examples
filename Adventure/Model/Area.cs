@@ -4,7 +4,6 @@ namespace Adventure.Model;
 
 public class Area
 {
-    public Tile[,] Tiles { get; private set; }
     
     public List<Item> Items { get; private set; }
 
@@ -12,12 +11,35 @@ public class Area
     
     public int Height { get; private set; }
 
-    public Area(int width, int height)
+    public Layer[] Layers { get; private set; }
+
+    public Area(int layers, int width, int height)
     {
         Width = width;
         Height = height;
+
+        this.Layers = new Layer[layers];
+
+        for (int i = 0; i < layers; i++)
+        {
+            this.Layers[i] = new Layer(width, height);
+        }
         
-        Tiles = new Tile[width, height];
         Items = new List<Item>();
+    }
+
+    public bool IsCellBlocked(int x, int y)
+    {
+
+        // special case: not within bounds
+        if (x < 0 || y < 0 || x > Width - 1 || y > Height - 1)
+            return true;
+        
+        for (int l = 0; l < Layers.Length; l++)
+        {
+            if (Layers[l].Tiles[x, y].Blocked)
+                return true;
+        }
+        return false;
     }
 }

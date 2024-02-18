@@ -38,11 +38,22 @@ internal class SceneComponent : DrawableGameComponent
         {
             for (int y = 0; y < area.Height; y++)
             {
-                Tile tile = area.Tiles[x, y];
+                bool blocked = false;
+                for (int i = 0; i < area.Layers.Length; i++)
+                {
+
+                    blocked |= area.Layers[i].Tiles[x, y].Blocked;
+                }
+
+                Color color = Color.DarkGreen;
+                if (blocked)
+                    color = Color.DarkRed;
+                
+                
                 int offsetX = (int)(x * scaleX) + 10;
                 int offsetY = (int)(y * scaleY) + 10;
                 
-                _spriteBatch.Draw(_pixel, new Rectangle(offsetX, offsetY, (int)scaleX, (int)scaleY), Color.DarkGreen); 
+                _spriteBatch.Draw(_pixel, new Rectangle(offsetX, offsetY, (int)scaleX, (int)scaleY), color); 
                 _spriteBatch.Draw(_pixel, new Rectangle(offsetX, offsetY, 1, (int)scaleY), Color.Black);
                 _spriteBatch.Draw(_pixel, new Rectangle(offsetX, offsetY, (int)scaleX, 1), Color.Black);
             }
